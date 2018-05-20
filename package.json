@@ -1,0 +1,41 @@
+{
+  "name": "siebelloginfoextract",
+  "version": "1.0.0",
+  "description": "Extract information from Siebel AOM log file",
+  "main": "index.html",
+  "scripts": {
+    "test": "mocha test/*",
+    "coverage": "istanbul cover _mocha -- -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanciprian/SiebelLogInfoExtract.git"
+  },
+  "keywords": [
+    "siebel",
+    "log",
+    "file"
+  ],
+  "author": "Ciprian Hotoleanu <hotoleanu.ciprian@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stefanciprian/SiebelLogInfoExtract/issues"
+  },
+  "homepage": "https://github.com/stefanciprian/SiebelLogInfoExtract#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-prettify": "^0.4.0",
+    "grunt-replace": "^1.0.1",
+    "mocha": "^3.2.0",
+    "serve-static": "^1.11.2",
+    "zombie": "^5.0.5"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5"
+  }
+}

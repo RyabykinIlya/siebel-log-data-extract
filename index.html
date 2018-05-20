@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content=
+    "A front-end template that helps you build fast, modern mobile web apps."
+    name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>Siebel Log Info Extract</title>
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta content="yes" name="mobile-web-app-capable">
+    <link href="images/android-desktop.png" rel="icon" sizes="192x192">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="Material Design Lite" name="apple-mobile-web-app-title">
+    <link href="images/ios-desktop.png" rel="apple-touch-icon-precomposed">
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta content="images/touch/ms-touch-icon-144x144-precomposed.png" name=
+    "msapplication-TileImage">
+    <meta content="#3372DF" name="msapplication-TileColor">
+    <link href="images/favicon.png" rel="shortcut icon">
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+    <link href=
+    "https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel=
+    "stylesheet">
+    <link href="stylesheets/material.min.css" rel="stylesheet">
+    <link href="stylesheets/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class=
+    "mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Siebel Log Info Extract</span>
+            </div>
+            <!-- Tabs -->
+
+
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a class="mdl-layout__tab is-active" href="#fixed-tab-1">OM Log
+                File Info Extract</a> <a class="mdl-layout__tab" href=
+                "#fixed-tab-2">FDR</a>
+            </div>
+        </header>
+
+
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Siebel Log Info Extract</span>
+        </div>
+
+
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+                <div class="page-content">
+                    <!-- File upload log file -->
+
+
+                    <div class="mdl-cell mdl-cell--4-col" id=
+                    "file-upload-card">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Please upload
+                                a log file:</h2>
+                            </div>
+
+
+                            <div class="mdl-card__supporting-text">
+                                <input id="files" name="file" type="file">
+                                <a class=
+                                "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                onclick="abortRead();">Cancel read</a>
+
+                                <div id="progress_bar">
+                                    <div class="percent">
+                                        0%
+                                    </div>
+                                </div>
+
+
+                                <div id="some_info">
+                                    File Content:
+                                </div>
+
+
+                                <div id="file_content">
+                                    None at the moment ... No uploads ...
+                                </div>
+                            </div>
+
+
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a class=
+                                "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                id="check_js">Check JavaScripts</a> <a class=
+                                "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                id="check_ev">Check Event Contexts</a>
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                id="check_sbl">Check SBLs</a>
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                id="check_sbl_desc">Check SBLs with description</a><a class=
+                                "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                id="check_ev_sbl">Check Event Contexts with
+                                SBLs</a> <a class=
+                                "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                id="check_errors">Check for errors</a>
+                            </div>
+
+
+                            <div class="mdl-card__menu">
+                                <!-- <button class=
+                            "mdl-button mdl-button==icon mdl-js-button mdl-js-ripple-effect material-icons"
+                            style="font-style: italic">share</button> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Output from log file -->
+
+
+                    <div class="mdl-cell mdl-cell--8-col" id="output-card">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Output:</h2>
+                            </div>
+
+
+                            <div class="mdl-card__supporting-text">
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <textarea class="mdl-textfield__input" id=
+                                    "results_output" rows="10">
+None ...
+</textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a class=
+                                "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                data-clipboard-target="#results_output" id=
+                                "copy-button">Copy to clipboard</a>
+                            </div>
+
+
+                            <div class="mdl-card__menu">
+                                <!-- <button class=
+                            "mdl-button mdl-button==icon mdl-js-button mdl-js-ripple-effect material-icons"
+                            style="font-style: italic">share</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+                <div class="page-content">
+                    <!-- FDR upload -->
+
+
+                    <div class="mdl-cell mdl-cell--4-col" id="fdr-upload-card">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Please upload
+                                a FDR file:</h2>
+                            </div>
+
+
+                            <div class="mdl-card__supporting-text">
+                                <input id="files-fdr" name="file-fdr" type=
+                                "file"> <a class=
+                                "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                onclick="abortRead();">Cancel read</a>
+
+                                <div id="progress_bar_fdr">
+                                    <div class="percent">
+                                        0%
+                                    </div>
+                                </div>
+
+
+                                <div id="some_info_fdr">
+                                    File Content:
+                                </div>
+
+
+                                <div id="file_content_fdr">
+                                    None at the moment ... No uploads ...
+                                </div>
+                            </div>
+
+
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a class=
+                                "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                id="lines_before_crash">Get last lines before
+                                crash</a>
+                            </div>
+
+
+                            <div class="mdl-card__menu">
+                                <!-- <button class=
+                            "mdl-button mdl-button==icon mdl-js-button mdl-js-ripple-effect material-icons"
+                            style="font-style: italic">share</button> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Output from fdr file -->
+
+
+                    <div class="mdl-cell mdl-cell--8-col" id="output-card-fdr">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Output:</h2>
+                            </div>
+
+
+                            <div class="mdl-card__supporting-text">
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <textarea class="mdl-textfield__input" id=
+                                    "results_output_fdr" rows="10">
+None ...
+</textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a class=
+                                "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                data-clipboard-target="#results_output_fdr" id=
+                                "copy-button-fdr">Copy to clipboard</a>
+                            </div>
+
+
+                            <div class="mdl-card__menu">
+                                <!-- <button class=
+                            "mdl-button mdl-button==icon mdl-js-button mdl-js-ripple-effect material-icons"
+                            style="font-style: italic">share</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+        <footer class="demo-footer mdl-mini-footer">
+            <div class="mdl-mini-footer--left-section">
+                <ul class="mdl-mini-footer--link-list">
+                    <li>
+                        <a href="http://www.oracle.com">Siebel Team RO -
+                        Config</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <script src="javascripts/jquery.js"></script> <script src="javascripts/material.min.js"></script> <script src="javascripts/clipboard.js"></script> <script src="javascripts/underscore.js"></script> <script src="javascripts/papaparse.js"></script> <script src="javascripts/main.js"></script>
+</body>
+</html>

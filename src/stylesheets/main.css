@@ -1,0 +1,68 @@
+#view-source {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900
+}
+#file-upload-card,
+#performance-upload-card,
+#fdr-upload-card {
+    position: relative;
+    float: left
+}
+#output-card,
+#output-card-performance,
+#output-card-fdr {
+    position: relative;
+    float: left
+}
+#file-upload-card > div,
+#performance-upload-card > div,
+#fdr-upload-card > div {
+    height: 100%;
+    width: auto
+}
+#output-card > div,
+#output-card-performance > div,
+#output-card-fdr > div {
+    height: 100%;
+    width: auto
+}
+#output-card > div > div.mdl-card__supporting-text > div,
+#output-card-performance > div > div.mdl-card__supporting-text > div,
+#output-card-fdr > div > div.mdl-card__supporting-text > div {
+    width: inherit
+}
+#results_output,
+#results_output_performance,
+#results_output_fdr {
+    font-size: 9pt
+}
+#progress_bar,
+#progress_bar_performance,
+#progress_bar_fdr {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid #000;
+    font-size: 14px;
+    clear: both;
+    opacity: 0;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear
+}
+#progress_bar.loading,
+#progress_bar_performance.loading,
+#progress_bar_fdr.loading {
+    opacity: 1
+}
+#progress_bar .percent,
+#progress_bar_performance .percent,
+#progress_bar_fdr .percent {
+    background-color: #9cf;
+    height: auto;
+    width: 0
+}

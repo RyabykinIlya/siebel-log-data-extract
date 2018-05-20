@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head class="hbs-head-container"></head>
+
+   <script id="hbs-head-template" type="text/x-handlebars-template">
+   <meta charset="utf-8">
+      <meta content="IE=edge" http-equiv="X-UA-Compatible">
+      <meta content="{{metaContent}}">
+      <meta content="width=device-width, initial-scale=1" name="viewport">
+      <title>{{title}}</title>
+      <link href="{{googleFonts}}" rel="stylesheet">
+      <link href="{{materialIcons}}" rel="stylesheet">
+      <link href="../bower_components/material-design-lite/material.min.css" rel="stylesheet">
+      <link href="stylesheets/main.css" rel="stylesheet">
+   </script>
+
+   <body>
+      <section class="hbs-body-container"></section>
+
+      <script id="hbs-body-template" type="text/x-handlebars-template">
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+         <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+               <span class="mdl-layout-title">{{title}}</span>
+            </div>
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+               {{#each tabs}}
+                  <a class="{{classValue}}" href="{{hrefValue}}">{{text}}</a>    
+               {{/each}}
+            </div>
+         </header>
+
+         <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">{{title}}</span>
+         </div>
+
+         <main class="mdl-layout__content">
+          {{#each sections}}
+            <section class="mdl-layout__tab-panel {{#if @first}}is-active{{/if}}" id="{{sectionId}}">
+               <div class="page-content">
+                  <div class="mdl-cell mdl-cell--4-col" id=
+                     "{{pageContentId}}">
+                     <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title">
+                           <h2 class="mdl-card__title-text">{{pageContentTitle}}
+                           </h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                           <input id="{{filesId}}" name="file" type="file">
+                           <a class=
+                              "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                              onclick="abortRead();">{{cancel}}</a>
+                           <div id="{{progressBarId}}">
+                              <div class="percent">
+                                 0%
+                              </div>
+                           </div>
+                           <div id="{{someInfoId}}">
+                              {{someInfoValue}}
+                           </div>
+                           <div id="{{fileContentId}}">
+                              {{fileContentValue}}
+                           </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                           {{#each buttons}}
+                              <a class="{{classValue}}" id="{{idValue}}">{{text}}</a>    
+                           {{/each}}
+                        </div>
+                        <div class="mdl-card__menu">
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="mdl-cell mdl-cell--8-col" id="{{outputCardId}}">
+                     <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title">
+                           <h2 class="mdl-card__title-text">{{opText}}</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                           <div class="mdl-textfield mdl-js-textfield">
+                              <textarea class="mdl-textfield__input" id=
+                                 "{{resultsOutputId}}" rows="10">
+                              None ...
+                              </textarea>
+                           </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                           <a class=
+                              "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                              data-clipboard-target="#{{resultsOutputId}}" id="{{ccId}}">{{ccText}}</a>
+                        </div>
+                        <div class="mdl-card__menu">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            {{/each}}
+         </main>
+
+         <footer class="demo-footer mdl-mini-footer">
+            <div class="mdl-mini-footer--left-section">
+               <ul class="mdl-mini-footer--link-list">
+                  <li>
+                     <a href={{footerLink}}>{{footerText}}</a>
+                  </li>
+               </ul>
+            </div>
+         </footer>
+      </div>
+      </script>
+
+      <script type="text/javascript">
+      var require = {
+             baseUrl: '../bower_components',
+             paths: {
+                 jquery: 'jquery/dist/jquery.min',
+                 handlebars: 'handlebars/handlebars.min',
+                 clipboard: 'clipboard/dist/clipboard.min',
+                 underscore: 'underscore/underscore-min',
+                 papaparse: 'papaparse/papaparse.min',
+                 main: '../src/javascripts/main'
+             }
+         }
+      </script>
+
+      <script src="../bower_components/material-design-lite/material.min.js"></script>
+      <script src="../bower_components/requirejs/require.js"></script>
+
+      <script src="javascripts/templates/hbs-head.js"></script> 
+      <script src="javascripts/templates/hbs-body.js"></script>
+
+      <script src="javascripts/main.js"></script>
+   </body>
+</html>
